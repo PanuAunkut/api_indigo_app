@@ -40,11 +40,11 @@ def predict_herb_grade():
         predicted_class = np.argmax(predictions, axis=-1)[0]
 
         # แทนที่ตัวเลขคลาสด้วยชื่อที่แมปไว้
-        predicted_class_name = class_mapping.get(predicted_class, "Unknown")
+        predicted_class_name = class_mapping.get(predicted_class, "No predict")
 
         return jsonify({'predicted_class': predicted_class_name})
     except Exception as e:
-        return jsonify({'error': str(e)}), 400
+        return jsonify({'predicted_class': 'No predict', 'error': str(e)}), 400
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
